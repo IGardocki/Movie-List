@@ -14,7 +14,7 @@ function App() {
   const [addText, setAddText] = useState('');
   const [watched, setWatched] = useState([]);
   const [toWatch, setToWatch] = useState([]);
-  const [showToWatch, setShowToWatch] = useState(true);
+  const [showToWatch, setShowToWatch] = useState(false);
 
   const gettersSetters = {
     movieTitles, setMovieTitles, searchText, setSearchText, addText, setAddText, watched, setWatched, toWatch, setToWatch, showToWatch, setShowToWatch
@@ -32,8 +32,14 @@ function App() {
       <SearchBar />
       <AddMovieBar/>
       <MovieList />
-      <WatchedMovieList/>
-      <ToWatchMovieList/>
+      <button onClick={() => {
+        setShowToWatch(!showToWatch)
+      }}>Toggle Between Watched and ToWatch List</button>
+      {
+        showToWatch ?  <ToWatchMovieList/> : <WatchedMovieList/>
+      }
+      
+
     </MovieContext.Provider>
   );
 }
