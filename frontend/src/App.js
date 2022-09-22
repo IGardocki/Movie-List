@@ -3,8 +3,8 @@ import './App.css';
 import { MovieList } from './MovieList';
 import { MovieContext } from './MovieContext';
 import { SearchBar } from './SearchBar';
-import {AddMovieBar} from './AddMovieBar';
-import {WatchedMovieList} from './WatchedMovieList'
+import { AddMovieBar } from './AddMovieBar';
+import { WatchedMovieList } from './WatchedMovieList'
 import { ToWatchMovieList } from './ToWatchMovieList';
 
 function App() {
@@ -30,15 +30,25 @@ function App() {
 
     <MovieContext.Provider value={gettersSetters}>
       <SearchBar />
-      <AddMovieBar/>
+      <AddMovieBar />
       <MovieList />
       <button onClick={() => {
-        setShowToWatch(!showToWatch)
-      }}>Toggle Between Watched and ToWatch List</button>
+        setShowToWatch(false)
+      }}>See Watched Movies</button>
+
+      <button onClick={() => {
+        setShowToWatch(true)
+        if(toWatch === []){
+          setToWatch(movieTitles)
+        }
+
+      }}>See Movies To Watch</button>
+
+
       {
-        showToWatch ?  <ToWatchMovieList/> : <WatchedMovieList/>
+        showToWatch ? <ToWatchMovieList /> : <WatchedMovieList />
       }
-      
+
 
     </MovieContext.Provider>
   );
