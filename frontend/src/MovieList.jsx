@@ -9,9 +9,10 @@ export const MovieList = () => {
         <>
             {movieTitles.map(movie => {
                 return (
-                    <div>
-                        {movie.title}
-                        <button onClick={() => {
+                    <div class="bg-light text-center">
+                       <h4>{movie.title}</h4> 
+
+                        <button class="btn btn-primary" onClick={() => {
                             fetch(`http://localhost:8080/movies/${movie.id}`, {
                                 method: 'DELETE',
                                 headers: {
@@ -22,19 +23,20 @@ export const MovieList = () => {
                         }>
                             Delete this movie</button>
 
-                            <button onClick={() => {
-                                let temps = watched;
-                                temps.push(movie);
-                                
-                                movie.watched = true;
-                                setWatched(temps);
-                                console.log(temps);
-                                console.log(movieTitles);
-                                setToWatch(movieTitles.filter(item => item !== movie));
-                                console.log(movieTitles.filter(item => item !== movie))
-                            }}>Add to Watched</button>
+                        <button class="btn btn-primary" onClick={() => {
+                            let temps = watched;
+                            temps.push(movie);
 
+                            movie.watched = true;
+                            setWatched(temps);
+                            // console.log(temps);
+                            // console.log(movieTitles);
+                            setToWatch(movieTitles.filter(item => item !== movie));
+                            // console.log(movieTitles.filter(item => item !== movie))
+                        }}>Add to Watched</button>
+                        <p>    </p>
                     </div>
+
                 )
             }
             )}

@@ -9,26 +9,28 @@ export const AddMovieBar = () => {
         <form onSubmit={e => {
             e.preventDefault();
 
-                fetch('http://localhost:8080/movies', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        title: addText
-                    })
+            fetch('http://localhost:8080/movies', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: addText
                 })
-                    .then(fetch('http://localhost:8080/movies')
-                        .then(res => res.json())
-                        .then(data => setMovieTitles(data)))
+            })
+                .then(fetch('http://localhost:8080/movies')
+                    .then(res => res.json())
+                    .then(data => setMovieTitles(data)))
         }
         }>
-            <input
-                value={addText}
-                placeholder={"add to movies"}
-                onChange={(e) => setAddText(e.target.value)}
-            />
+            <div class="form-group">
+                <input class="form-control"
+                    value={addText}
+                    placeholder={"Add to Movies"}
+                    onChange={(e) => setAddText(e.target.value)}
+                />
+            </div>
         </form>
 
     );
