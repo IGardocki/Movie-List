@@ -11,7 +11,7 @@ export const MovieList = () => {
                 return (
                     <div class="bg-light text-center">
                        <h4>{movie.title}</h4> 
-
+<div class="btn-group">
                         <button class="btn btn-primary" onClick={() => {
                             fetch(`http://localhost:8080/movies/${movie.id}`, {
                                 method: 'DELETE',
@@ -32,9 +32,10 @@ export const MovieList = () => {
                             // console.log(temps);
                             // console.log(movieTitles);
                             setToWatch(movieTitles.filter(item => item !== movie));
-                            // console.log(movieTitles.filter(item => item !== movie))
+                            console.log(movieTitles.filter(item => item !== movie))
                         }}>Add to Watched</button>
                         <p>    </p>
+                        </div>
                     </div>
 
                 )

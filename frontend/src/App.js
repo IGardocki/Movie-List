@@ -28,12 +28,13 @@ function App() {
 
   return (
     // <div class="container">
-      <MovieContext.Provider value={gettersSetters}>
-        <nav class="navbar navbar-light bg-primary">
-          <SearchBar />
-          <AddMovieBar />
-        </nav>
-        <MovieList />
+    <MovieContext.Provider value={gettersSetters}>
+      <nav class="navbar navbar-light bg-primary">
+        <SearchBar />
+        <AddMovieBar />
+      </nav>
+      <MovieList />
+      <div class="text-center">
         <button type="button" class="btn btn-primary" onClick={() => {
           setShowToWatch(false)
         }}>See Watched Movies</button>
@@ -45,14 +46,16 @@ function App() {
           }
 
         }}>See Movies To Watch</button>
+      </div>
 
 
-        {
-          showToWatch ? <ToWatchMovieList /> : <WatchedMovieList />
-        }
+
+      {
+        showToWatch ? <ToWatchMovieList /> : <WatchedMovieList />
+      }
 
 
-      </MovieContext.Provider>
+    </MovieContext.Provider>
     // </div>
   );
 }
